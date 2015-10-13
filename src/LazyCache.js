@@ -6,6 +6,15 @@ export default function lazyCache(component, calculators) {
   const allProps = [];
   const cache = {};
   const api = {};
+  const uncache = changedProp => {
+    Object.keys(cache).forEach(key => {
+      if(~cache[key].props.indexOf(changedProp)) {
+        delete cache[key].value;
+        uncache(key);
+      }
+    });
+  };
+
   Object.keys(calculators).forEach(key => {
     const calculate = calculators[key];
     const props = getParamNames(calculate);
@@ -21,7 +30,7 @@ export default function lazyCache(component, calculators) {
         if (cached && cached.value !== undefined) {
           return cached.value;
         }
-        const params = props.map(prop => component.props[prop]);
+        const params = props.map(prop => component.props[prop] || api[prop]);
         const value = calculate(...params);
         cache[key] = {props, value};
         return value;
@@ -35,13 +44,7 @@ export default function lazyCache(component, calculators) {
         diffProps.push(prop);
       }
     });
-    if (diffProps.length) {
-      Object.keys(cache).forEach(key => {
-        if (intersects(diffProps, cache[key].props)) {
-          delete cache[key].value; // uncache value
-        }
-      });
-    }
+    diffProps.forEach(uncache);
   };
   return api;
 }
