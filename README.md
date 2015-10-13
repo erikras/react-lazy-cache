@@ -83,3 +83,5 @@ infinite dependency loop!**
 ## Conclusion
 
 That's all you need to know! Go forth and intelligently cache your calculated values!
+
+Feedback welcome.
