@@ -1,5 +1,4 @@
 import getParamNames from './getParamNames';
-import intersects from './intersects';
 import deepEqual from 'deep-equal';
 
 export default function lazyCache(component, calculators) {
