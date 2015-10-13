@@ -7,7 +7,7 @@ export default function lazyCache(component, calculators) {
   const api = {};
   const uncache = changedProp => {
     Object.keys(cache).forEach(key => {
-      if(~cache[key].props.indexOf(changedProp)) {
+      if (~cache[key].props.indexOf(changedProp)) {
         delete cache[key].value;
         uncache(key);
       }
