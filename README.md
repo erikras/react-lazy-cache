@@ -27,7 +27,7 @@ when your component will receive new props.
 
 ```javascript
 import React, {Component, PropTypes} from 'react';
-import LazyCache from 'react-lazy-cache';
+import lazyCache from 'react-lazy-cache';
 
 export default class Arithmetic extends Component {
   static propTypes = {
@@ -37,7 +37,7 @@ export default class Arithmetic extends Component {
   
   componentWillMount() {
     // create cache
-    this.cache = new LazyCache(this, {
+    this.cache = lazyCache(this, {
       sum: (a, b) => a + b,
       difference: (a, b) => a - b,
       product: (a, b) => a * b,
@@ -50,11 +50,12 @@ export default class Arithmetic extends Component {
   }
   
   render() {
+    const {sum, difference, product, quotient} = this.cache;
     return (<div>
-      <div>Sum: {this.cache.get('sum')}</div>
-      <div>Difference: {this.cache.get('difference')}</div>
-      <div>Product: {this.cache.get('product')}</div>
-      <div>Quotient: {this.cache.get('quotient')}</div>
+      <div>Sum: {sum}</div>
+      <div>Difference: {difference}</div>
+      <div>Product: {product}</div>
+      <div>Quotient: {quotient}</div>
     </div>);
   }
 }
@@ -64,8 +65,9 @@ Two things to notice about the above example:
 
 ### Lazy
 
-The values do not get calculated until the `cache.get()` call is made. That's why it's "lazy". They will not be 
-calculated again unless one of the props that the calculation depends on changes.
+The values do not get calculated until the properties on the `cache` object get referenced in render(). 
+That's why it's "lazy". They will not be calculated again unless one of the props that the calculation depends on
+changes.
 
 ### Parameter Injection
  

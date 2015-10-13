@@ -1,2 +1,2 @@
-import LazyCache from './LazyCache';
-export default LazyCache;
+import lazyCache from './lazyCache';
+export default lazyCache;
