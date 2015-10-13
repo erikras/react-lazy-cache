@@ -18,7 +18,7 @@ export default function lazyCache(component, calculators) {
     Object.defineProperty(api, key, {
       get: () => {
         const cached = cache[key];
-        if(cached && cached.value !== undefined) {
+        if (cached && cached.value !== undefined) {
           return cached.value;
         }
         const params = props.map(prop => component.props[prop]);
