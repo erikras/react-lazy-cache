@@ -41,7 +41,8 @@ export default class Arithmetic extends Component {
       sum: (a, b) => a + b,
       difference: (a, b) => a - b,
       product: (a, b) => a * b,
-      quotient: (a, b) => a / b
+      quotient: (a, b) => a / b,
+      sumSquared: (sum) => sum * sum
     });
   }
   
@@ -50,12 +51,14 @@ export default class Arithmetic extends Component {
   }
   
   render() {
-    const {sum, difference, product, quotient} = this.cache;
+    const {sum, difference, product, quotient, sumSquared} = this.cache;
     return (<div>
       <div>Sum: {sum}</div>
       <div>Difference: {difference}</div>
       <div>Product: {product}</div>
       <div>Quotient: {quotient}</div>
+      <div>Sum Squared: {sumSquared}</div>
+    </div>);
     </div>);
   }
 }
@@ -73,6 +76,9 @@ changes.
  
 "_But how does it know which prop to use??_", you ask? `react-lazy-cache` detects the names of the props by the 
 parameter names to the calculation functions.
+
+You can even inject other calculated values, such as in the case of `sumSquared`. **Be careful to not cause an
+infinite dependency loop!**
 
 ## Conclusion
 
