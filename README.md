@@ -5,7 +5,7 @@
 [![NPM Downloads](https://img.shields.io/npm/dm/react-lazy-cache.svg?style=flat-square)](https://www.npmjs.com/package/react-lazy-cache)
 [![Build Status](https://img.shields.io/travis/erikras/react-lazy-cache/master.svg?style=flat-square)](https://travis-ci.org/erikras/react-lazy-cache)
 
-`react-lazy-cache` is a utility to memoize values calculated from props to a React component.
+`react-lazy-cache` is a utility to lazily calculate and cache values in a React component based on props.
 
 ## Installation
 
