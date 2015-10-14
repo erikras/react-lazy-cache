@@ -38,11 +38,26 @@ export default class Arithmetic extends Component {
   componentWillMount() {
     // create cache
     this.cache = lazyCache(this, {
-      sum: (a, b) => a + b,
-      difference: (a, b) => a - b,
-      product: (a, b) => a * b,
-      quotient: (a, b) => a / b,
-      sumSquared: (sum) => sum * sum
+      sum: {
+        params: ['a', 'b'],
+        fn: (a, b) => a + b
+      },
+      difference: {
+        params: ['a', 'b'],
+        fn: (a, b) => a - b
+      },
+      product: {
+        params: ['a', 'b'],
+        fn: (a, b) => a * b
+      },
+      quotient: {
+        params: ['a', 'b'],
+        fn: (a, b) => a / b
+      },
+      sumSquared: {
+        params: ['sum'],
+        fn: (sum) => sum * sum
+      }
     });
   }
   
@@ -59,7 +74,6 @@ export default class Arithmetic extends Component {
       <div>Quotient: {quotient}</div>
       <div>Sum Squared: {sumSquared}</div>
     </div>);
-    </div>);
   }
 }
 ```
@@ -72,13 +86,12 @@ The values do not get calculated until the properties on the `cache` object get 
 That's why it's "lazy". They will not be calculated again unless one of the props that the calculation depends on
 changes.
 
-### Parameter Injection
+### Selecting Parameters
  
-"_But how does it know which prop to use??_", you ask? `react-lazy-cache` detects the names of the props by the 
-parameter names to the calculation functions.
+When you specify your functions to calculate each value, you must specify the `params`, which refer either to props 
+given to your React component, _or_ to other calculated values (see: `sumSquared`).
 
-You can even inject other calculated values, such as in the case of `sumSquared`. **Be careful to not cause an
-infinite dependency loop!**
+**Be careful to not cause an infinite dependency loop!**
 
 ## Conclusion
 

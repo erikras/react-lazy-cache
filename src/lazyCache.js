@@ -1,4 +1,3 @@
-import getParamNames from './getParamNames';
 import deepEqual from 'deep-equal';
 
 export default function lazyCache(component, calculators) {
@@ -15,8 +14,8 @@ export default function lazyCache(component, calculators) {
   };
 
   Object.keys(calculators).forEach(key => {
-    const calculate = calculators[key];
-    const props = getParamNames(calculate);
+    const fn = calculators[key].fn;
+    const props = calculators[key].params;
     props.forEach(param => {
       if (!~allProps.indexOf(param)) {
         allProps.push(param);
@@ -24,13 +23,13 @@ export default function lazyCache(component, calculators) {
     });
     cache[key] = {props};
     Object.defineProperty(api, key, {
-      get: () => {
+      get() {
         const cached = cache[key];
         if (cached && cached.value !== undefined) {
           return cached.value;
         }
         const params = props.map(prop => component.props[prop] || api[prop]);
-        const value = calculate(...params);
+        const value = fn(...params);
         cache[key] = {props, value};
         return value;
       }

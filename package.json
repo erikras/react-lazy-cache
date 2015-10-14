@@ -1,7 +1,7 @@
 {
   "name": "react-lazy-cache",
   "description": "A utility to lazily calculate and cache values in a react component based on props",
-  "version": "2.1.2",
+  "version": "3.0.0",
   "homepage": "https://github.com/erikras/react-lazy-cache",
   "repository": {
     "type": "git",
