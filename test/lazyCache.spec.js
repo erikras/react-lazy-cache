@@ -10,9 +10,12 @@ describe('lazyCache', () => {
         b: 5
       }
     }, {
-      calc(a, b) {
-        calls++;
-        return a + b;
+      calc: {
+        params: ['a', 'b'],
+        fn: (a, b) => {
+          calls++;
+          return a + b;
+        }
       }
     });
 
@@ -31,9 +34,12 @@ describe('lazyCache', () => {
         b: 5
       }
     }, {
-      calc(a, b) {
-        calls++;
-        return a + b;
+      calc: {
+        params: ['a', 'b'],
+        fn: (a, b) => {
+          calls++;
+          return a + b;
+        }
       }
     });
 
@@ -57,9 +63,12 @@ describe('lazyCache', () => {
         b: 5
       }
     }, {
-      calc(a, b) {
-        calls++;
-        return a + b;
+      calc: {
+        params: ['a', 'b'],
+        fn: (a, b) => {
+          calls++;
+          return a + b;
+        }
       }
     });
 
@@ -84,9 +93,12 @@ describe('lazyCache', () => {
         c: 6
       }
     }, {
-      calc(a, b) {
-        calls++;
-        return a + b;
+      calc: {
+        params: ['a', 'b'],
+        fn: (a, b) => {
+          calls++;
+          return a + b;
+        }
       }
     });
 
@@ -112,14 +124,19 @@ describe('lazyCache', () => {
         c: 6
       }
     }, {
-      sum(a, b) {
-        sumCalls++;
-        return a + b;
+      sum: {
+        params: ['a', 'b'],
+        fn: (a, b) => {
+          sumCalls++;
+          return a + b;
+        }
       },
-
-      product(sum, c) {
-        productCalls++;
-        return sum * c;
+      product: {
+        params: ['sum', 'c'],
+        fn: (sum, c) => {
+          productCalls++;
+          return sum * c;
+        }
       }
     });
 
@@ -143,15 +160,20 @@ describe('lazyCache', () => {
       b: 5,
       c: 6
     };
-    const instance = lazyCache({ props }, {
-      sum(a, b) {
-        sumCalls++;
-        return a + b;
+    const instance = lazyCache({props}, {
+      sum: {
+        params: ['a', 'b'],
+        fn: (a, b) => {
+          sumCalls++;
+          return a + b;
+        }
       },
-
-      product(sum, c) {
-        productCalls++;
-        return sum * c;
+      product: {
+        params: ['sum', 'c'],
+        fn: (sum, c) => {
+          productCalls++;
+          return sum * c;
+        }
       }
     });
 
@@ -180,15 +202,20 @@ describe('lazyCache', () => {
       b: 5,
       c: 6
     };
-    const instance = lazyCache({ props }, {
-      sum(a, b) {
-        sumCalls++;
-        return a + b;
+    const instance = lazyCache({props}, {
+      sum: {
+        params: ['a', 'b'],
+        fn: (a, b) => {
+          sumCalls++;
+          return a + b;
+        }
       },
-
-      product(sum, c) {
-        productCalls++;
-        return sum * c;
+      product: {
+        params: ['sum', 'c'],
+        fn: (sum, c) => {
+          productCalls++;
+          return sum * c;
+        }
       }
     });
 
