@@ -95,7 +95,7 @@ given to your React component, _or_ to other calculated values (see: `sumSquared
 
 ### Internet Explorer 8 support
 
-As this library utilizes Getters, which are not shimmable in IE8 and older, an alternate `noGettes` module is exposed.
+As this library utilizes Getters, which are not shimmable in IE8 and older, an alternate `noGetters` module is exposed.
 This version allows you to cache values, but are not able to inject other values such as `sumSquared`. Usage:
 
 ```javascript
