@@ -93,6 +93,23 @@ given to your React component, _or_ to other calculated values (see: `sumSquared
 
 **Be careful to not cause an infinite dependency loop!**
 
+### Internet Explorer 8 support
+
+As this library utilizes Getters, which are not shimmable in IE8 and older, an alternate `noGettes` module is exposed.
+This version allows you to cache values, but are not able to inject other values such as `sumSquared`. Usage:
+
+```javascript
+import LazyCache from 'react-lazy-cache/noGetters';
+
+const cache = new LazyCache(...) // same signature as normal version
+
+const sum = cache.get('sum');
+```
+
+The difference is that it's a class and not a plain function (so you have to `new` it), and properties are accessed
+through the `get`-function, instead of as a property.
+
+
 ## Conclusion
 
 That's all you need to know! Go forth and intelligently cache your calculated values!
