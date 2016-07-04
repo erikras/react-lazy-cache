@@ -20,7 +20,7 @@
   "author": "Erik Rasmussen <rasmussenerik@gmail.com> (http://github.com/erikras)",
   "license": "MIT",
   "bugs": {
-    "url": "git://github.com/erikras/react-lazy-cache/issues"
+    "url": "https://github.com/erikras/react-lazy-cache/issues"
   },
   "engines": {
     "node": ">= 0.10.0"
