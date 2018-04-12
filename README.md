@@ -1,7 +1,6 @@
-#react-lazy-cache
+# react-lazy-cache
 
-[![NPM Version](https://img.shields.io/npm/v/react-lazy-cache.svg?style=flat-square)](https://www.npmjs
-.com/package/react-lazy-cache) 
+[![NPM Version](https://img.shields.io/npm/v/react-lazy-cache.svg?style=flat-square)](https://www.npmjs.com/package/react-lazy-cache)
 [![NPM Downloads](https://img.shields.io/npm/dm/react-lazy-cache.svg?style=flat-square)](https://www.npmjs.com/package/react-lazy-cache)
 [![Build Status](https://img.shields.io/travis/erikras/react-lazy-cache/master.svg?style=flat-square)](https://travis-ci.org/erikras/react-lazy-cache)
 
